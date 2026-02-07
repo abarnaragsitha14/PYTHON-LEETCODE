@@ -1,0 +1,27 @@
+Course schedule II
+class Solution:
+    def findOrder(self, n, prerequisites):
+        graph = [[] for _ in range(n)]
+        indeg = [0] * n
+
+        for a, b in prerequisites:
+            graph[b].append(a)
+            indeg[a] += 1
+
+        q = deque()
+        for i in range(n):
+            if indeg[i] == 0:
+                q.append(i)
+
+        ans = []
+        while q:
+            x = q.popleft()
+            ans.append(x)
+            for y in graph[x]:
+                indeg[y] -= 1
+                if indeg[y] == 0:
+                    q.append(y)
+
+        return ans if len(ans) == n else []
+
+        

@@ -1,0 +1,5 @@
+Minimum number of vertices to reach all nodes
+class Solution(object):
+    def findSmallestSetOfVertices(self, n, edges):
+         return list(set(range(n)) - set(j for i, j in edges))
+       

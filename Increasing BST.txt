@@ -1,0 +1,15 @@
+Increasing BST
+class Solution:
+    def increasingBST(self, root):
+        dummy = TreeNode(0)
+        self.curr = dummy 
+        def inorder(nst):
+            if nst is None:
+                return
+            inorder(nst.left)
+            x = nst.val   
+            self.curr.right = TreeNode(x)  
+            self.curr = self.curr.right    
+            inorder(nst.right)
+        inorder(root)
+        return dummy.right

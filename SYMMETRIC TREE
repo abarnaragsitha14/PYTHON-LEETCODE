@@ -1,0 +1,8 @@
+class Solution(object):
+    def isSymmetric(self, root):
+        return self.symmetric(root,root)
+    def symmetric(self,p,q):
+        if not p or not q:
+            return p==q
+        return p.val==q.val and self.symmetric(p.left,q.right) and self.symmetric(p.right,q.left)
+        
